@@ -7,6 +7,7 @@ const {
 	postComment,
 } = require("./controllers/articles.controllers");
 const { getTopics } = require("./controllers/news.controllers");
+const {getEndpoints} = require("./controllers/api.controller")
 const errors = require("./controllers/errors");
 const { getUsers } = require("./controllers/users.controllers");
 
@@ -25,6 +26,8 @@ app.post("/api/articles/:article_id/comments", postComment);
 
 //USERS
 app.get("/api/users", getUsers);
+
+app.get("/api", getEndpoints);
 
 app.all("/*", (req, res) => {
 	res.status(404).send({ msg: "Path not found." });
