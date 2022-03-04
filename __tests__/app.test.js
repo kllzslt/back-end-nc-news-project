@@ -76,7 +76,7 @@ describe("/api/articles endpoint", () => {
 					articles.forEach((article) => {
 						expect(article).toEqual(
 							expect.objectContaining({
-								comment_count: expect.any(String),
+								comment_count: expect.any(Number),
 							})
 						);
 					});
