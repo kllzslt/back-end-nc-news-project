@@ -1,6 +1,8 @@
-exports.getEndpoints = (req, res, next) => {
-  getJsonInfo().then((description) => {
-    res.status(200).send(description);
-  })
-  .catch(next);
-}
+exports.getEndpoints = (_, res, next) => {
+	res.status(200).send({
+		"GET /api": {
+			description:
+				"Responds with a JSON object detailing the available endpoints",
+		},
+	});
+};

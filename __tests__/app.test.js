@@ -350,3 +350,15 @@ describe("/api/users endpoint", () => {
 		});
 	});
 });
+
+describe("GET /api", () => {
+	test("Status 200 - Response is an object containing all available endpoints", () => {
+		return request(app)
+			.get("/api")
+			.expect(200)
+			.then(({ body: { endpoints } }) => {
+				expect(typeof endpoints).toBe("object");
+				expect(endpoints["GET /api"]).not.toBe(undefined);
+			});
+	});
+});
