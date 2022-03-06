@@ -11,6 +11,7 @@ const { getTopics } = require("./controllers/news.controllers");
 const errors = require("./controllers/errors");
 const { getUsers } = require("./controllers/users.controllers");
 const { removeCommentById } = require("./controllers/comments.controllers");
+const { getEndpoints} = require("./controllers/api.controller")
 
 const app = express();
 app.use(express.json());
@@ -22,6 +23,8 @@ app.get("/api", (req, res, next) => {
 		res.status(200).send({ endpoints });
 	});
 });
+
+
 
 //TOPICS
 app.get("/api/topics", getTopics);
