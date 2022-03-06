@@ -17,11 +17,10 @@ const app = express();
 app.use(express.json());
 
 app.get("/", (req, res, next) => {
-	readFile("./endpoints.json").then((body) => {
-		const endpoints = JSON.parse(body);
-		res.status(200).send({ endpoints });
+	
+		// const endpoints = JSON.parse(body);
+		res.status(200).send({ msg: "Heroku start" });
 	});
-});
 
 //API
 app.get("/api", (req, res, next) => {
