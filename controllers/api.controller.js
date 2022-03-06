@@ -1,8 +1,17 @@
 exports.getEndpoints = (_, res, next) => {
 	res.status(200).send({
-		"GET /": {
+		"GET /api": {
 			description:
 				"Responds with a JSON object detailing the available endpoints",
+		},
+	});
+};
+
+exports.getEndpoints = (_, res, next) => {
+	res.status(200).send({
+		"GET /": {
+			description:
+				"HEROKU start",
 		},
 	});
 };
