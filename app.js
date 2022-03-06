@@ -1,5 +1,5 @@
 const express = require("express");
-const { readFile } = require("fs/promises");
+//const { readFile } = require("fs/promises");
 const {
 	getArticles,
 	getArticlesById,
@@ -11,24 +11,20 @@ const { getTopics } = require("./controllers/news.controllers");
 const errors = require("./controllers/errors");
 const { getUsers } = require("./controllers/users.controllers");
 const { removeCommentById } = require("./controllers/comments.controllers");
-const { getEndpoints} = require("./controllers/api.controller")
+const { getEndpointsHome, getEndpointsApi} = require("./controllers/api.controller")
 
 const app = express();
 app.use(express.json());
 
-app.get("/", (req, res, next) => {
+app.get("/", getEndpointsHome);
+// app.get("/", (req, res, next) => {
 	
-		// const endpoints = JSON.parse(body);
-		res.status(200).send({ msg: "Heroku start" });
-	});
+// 		// const endpoints = JSON.parse(body);
+// 		res.status(200).send({ msg: "Heroku start" });
+// 	});
 
 //API
-app.get("/api", (req, res, next) => {
-	readFile("./endpoints.json").then((body) => {
-		const endpoints = JSON.parse(body);
-		res.status(200).send({ endpoints });
-	});
-});
+app.get("/api", getEndpointsApi);
 
 
 

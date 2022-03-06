@@ -1,13 +1,13 @@
-exports.getEndpoints = (_, res, next) => {
-	res.status(200).send({
-		"GET /api": {
-			description:
-				"Responds with a JSON object detailing the available endpoints",
-		},
+const { readFile } = require("fs/promises");
+
+exports.getEndpointsApi = (req, res, next) => {
+	readFile("./endpoints.json").then((body) => {
+		const endpoints = JSON.parse(body);
+		res.status(200).send({ endpoints });
 	});
 };
 
-exports.getEndpoints = (_, res, next) => {
+exports.getEndpointsHome = (_, res, next) => {
 	res.status(200).send({
 		"GET /": {
 			description:
