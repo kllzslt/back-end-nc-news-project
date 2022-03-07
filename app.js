@@ -1,3 +1,4 @@
+const cors = require('cors');
 const express = require("express");
 //const { readFile } = require("fs/promises");
 const {
@@ -12,21 +13,17 @@ const errors = require("./controllers/errors");
 const { getUsers } = require("./controllers/users.controllers");
 const { removeCommentById } = require("./controllers/comments.controllers");
 const { getEndpointsHome, getEndpointsApi} = require("./controllers/api.controller")
-
 const app = express();
+
+app.use(cors());
+
 app.use(express.json());
 
+//HOME
 app.get("/", getEndpointsHome);
-// app.get("/", (req, res, next) => {
-	
-// 		// const endpoints = JSON.parse(body);
-// 		res.status(200).send({ msg: "Heroku start" });
-// 	});
 
 //API
 app.get("/api", getEndpointsApi);
-
-
 
 //TOPICS
 app.get("/api/topics", getTopics);
